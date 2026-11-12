@@ -1,6 +1,17 @@
+<div align="center">
+
+<img src="docs/icon.png" width="96" alt="">
+
 # Pulse lines
 
-A sparkline of each agent's tool calls per minute on its Haunt row.
+**A sparkline of each agent's tool calls per minute on its Haunt row.**
+
+[![Haunt plugin](https://img.shields.io/badge/Haunt-plugin-D97757)](https://github.com/highskore/haunt-hackathon)
+![Plugin API 0.5](https://img.shields.io/badge/plugin%20API-0.5-111)
+![WASM component](https://img.shields.io/badge/WASM-component-654ff0?logo=webassembly&logoColor=white)
+![MIT licence](https://img.shields.io/badge/licence-MIT-6b7280)
+
+</div>
 
 Each agent row gets a small moving line in its right-hand slot: tool calls per minute over the last 30 minutes, scaled to that agent's busiest minute. A busy agent draws a lively line. One that is running but has made no tool call for 5 minutes goes flat and grey, with `quiet 6m` after its meta line. One that makes the same call over and over (8 times in a row by default) turns orange, with `same Bash call ×14`. The line moves on every 30 seconds even when no events come. While the agent needs you, Haunt's own status takes the row and the line is hidden.
 
