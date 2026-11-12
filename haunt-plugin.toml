@@ -1,0 +1,23 @@
+[plugin]
+id = "dev.haunt.pulse-lines"
+name = "Pulse lines"
+description = "A sparkline of each agent's tool calls per minute on its Haunt row"
+version = "0.1.0"
+api = "0.5"
+entry = "target/wasm32-wasip2/release/haunt_plugin.wasm"
+license = "MIT"
+
+[capabilities]
+events = ["agent.prompt", "agent.tool", "agent.subagent", "agent.permission-request", "agent.stop", "agent.unknown"]
+decorate = true
+# Commands and paths tell a loop of the same call from steady work.
+event_details = true
+timer = true
+
+[settings]
+minutes = { type = "integer", default = 30, description = "Minutes in the sparkline, 5 to 32" }
+quiet_after_min = { type = "integer", default = 5, description = "Minutes without a tool call before a running agent reads as quiet" }
+loop_after = { type = "integer", default = 8, description = "The same call this many times in a row reads as a loop" }
+notes = { type = "bool", default = true, description = "Show \"quiet 6m\" and \"same Bash call ×14\" after the meta line" }
+subagents = { type = "bool", default = true, description = "Count subagents' tool calls too" }
+unverified = { type = "bool", default = false, description = "Also count events without the tab's nonce, which anything in the terminal can forge" }
